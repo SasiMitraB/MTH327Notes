@@ -1,6 +1,6 @@
 # Depth First Search
 
-As its name implies, depth first search searches "deeper" in the graph whenever possible. Depth first search explores edges out of the most recently discovered vertex $v$ that still has unexplored edges leaving it. Once all of $v$ ’s edges have been explored, the search "backtracks" to explore edges leaving the vertex from which v was discovered. This process continues until all vertices that are reachable from the original source vertex have been discovered. If any undiscovered vertices remain, then depth-ûrst search selects one of them as a new source, repeating the search from that source. The algorith repeats this process until every vertex is discovered.
+As its name implies, depth first search searches "deeper" in the graph whenever possible. Depth first search explores edges out of the most recently discovered vertex $v$ that still has unexplored edges leaving it. Once all of $v$ ’s edges have been explored, the search "backtracks" to explore edges leaving the vertex from which v was discovered. This process continues until all vertices that are reachable from the original source vertex have been discovered. If any undiscovered vertices remain, then depth first search selects one of them as a new source, repeating the search from that source. The algorith repeats this process until every vertex is discovered.
 
 Like BFS, we color the vertices as we go. Each vertex is initially white, and is grayed when it is discovered in the search, and it blacked when it is finished (ie, when it's adjacency list is completely discovered). 
 
@@ -38,6 +38,7 @@ DFS Visit subroutine works as follows:
 1. Upon every call of DFS visit at vertex $u$, the DFS increments the time counter, and updates the $u$'s dime of discovery as the current time.
 2. For each of the adjacent vertices of $u$ that have not been previously visited (ie the color is white), which we refer to as $v$, the priori of $v$ is updated to be $u$, and the DFS subroutine is called on this vertex again.
 3. Once it iterates through all the vertices adjacent to $u$, it again updates the global time counter and marks the finishing time of $u$, and the color is updated to be black.
+
 ![alt text](example_dfs.png)
 
 During an execution of DFS, the subroutine DFS-Visit is called once per vertex, and it operates on all the adjacent vertices to the vertex it is called upon. Since $\sum _{v \epsilon V} |Adj(v)| = \Theta (E)$, the running time of DFS-Visit is given by $\Theta (V + E)$. The other sections of DFS algorithm are constant in time. Thus, the total running time of DFS is given by $\Theta (V + E)$.
