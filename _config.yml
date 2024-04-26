@@ -1,0 +1,8 @@
+# _config.yml
+
+# MathJax settings
+mathjax:
+  enable: true
+  # Set the renderer to CommonHTML for compatibility with GitHub Pages
+  # This may be changed to SVG or NativeMathML for other platforms
+  renderer: CommonHTML
