@@ -1,0 +1,15 @@
+# _config.yml
+
+# Site settings
+title: Your Site Title
+description: Your site description
+
+# Theme settings
+theme: jekyll-theme-minimal  # Choose your preferred theme, you can replace 'jekyll-theme-minimal' with the name of the theme you want to use.
+
+# MathJax settings
+mathjax:
+  enable: true
+  # Set the renderer to CommonHTML for compatibility with GitHub Pages
+  # This may be changed to SVG or NativeMathML for other platforms
+  renderer: CommonHTML
