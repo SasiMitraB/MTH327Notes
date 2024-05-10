@@ -12,7 +12,7 @@
 - [Bellman Ford Algorithm](#bellman-ford-algorithm)
   - [Pseudocode](#pseudocode-1)
   - [Time Complexity](#time-complexity-1)
-- [Single Source Shortest Paths in Directed Acyclic Graphs](#single-source-shortest-paths-in-directed-acyclic-graphs)
+  - [Single Source Shortest Paths in Directed Acyclic Graphs](#single-source-shortest-paths-in-directed-acyclic-graphs)
 
 
 ***
@@ -125,7 +125,13 @@ In line 7 we choose the queue element with the minimal size in the variable $u$,
 
 ## Time complexity
 
-Fill this thing i'm too sleepy atm
+The initialization steps till line 3 is constant time. Line 4 and 5 are constructing a priority queue, which takes time on the order of $O(\log V)$ with the max heapify algorithm.
+
+In line 7, you're doing EXTRACT-MIN(Q), which returns the value of the minimum element, and removes it from the queue. The EXTRACT-MIN code calls the max heapify algorithm, so this has a time complexity of $O(\log V)$. This happens once per vertex, which gives us a running time for this section to be $O(V \log V)$. 
+
+Following Relaxation, we are updating the values of all the vertices, and the priority queue has to be updated again. For this, we update the priority queue by using the max heapify algorithm, which takes $O(\log V)$. This happens once per edge, which gives us a running time for this section to be $O(E \log V)$.
+
+Both combined, the total running time of the algorithm to be $O(E \log V + V \log V)$
 
 # Bellman Ford Algorithm
 
@@ -154,7 +160,23 @@ If all edges satisfy the triangle inequality, it returns True.
 
 ## Time Complexity
 
-The Bellman Ford Algorithm runs in Time complexity $O(V^2 - E)$
+The Bellman Ford Algorithm runs in Time complexity $O(V +  E)$
 
-# Single Source Shortest Paths in Directed Acyclic Graphs
+## Single Source Shortest Paths in Directed Acyclic Graphs
 
+In this section, we introduce another restriction to the weighted directed graphs. They must remain acyclic. We'll see that if the edges of a weighted DAG are relaxed according to a topological sort of it's vertices, then it takes $\Theta (V + E)$ running time to compute the shortest path from a source to the vertices.
+
+The algorithm begins by topologicaly sorting the given DAG, which imposes a linear ordering of it's vertices. If the DAG contains a path from the vertex $u$ to the vertex $v$,  then $u$ preceeds $v$ in the topological sort. Otherwise, there is not going to be a path. DAG-SHORTEST-PATH makes only one pass over the vertices sorted topologically. As it proceeds over a vertex, it relaxes each edge that leaves the vertex.
+
+```pseudocode
+DAG-SHORTEST-PATH(G,w,s)
+1.topologically sort DAG
+2.INITIALIZE-SINGLE-SOURCES(G,s)
+3.for each vertex u in G.V taken in topologically sorted order
+4.  for each vertex v in G.Adj[u]
+5.    RELAX(u,v,w)  
+```
+
+The topological sort takes a running time of $\theta(V + E)$. Initialize single source takes a running time of $\theta(V)$. 
+
+The relaxation happens once per edge, so that takes a running time of $\theta(E)$. This gives us a total running time of the algorithm to be $O(V + E)$

@@ -42,8 +42,30 @@ This intuition suggests a recursive approach to solving the problem. This has a 
 
 ## Pseudocode
 
-We define a procedure, `RECURSIVE-ACTIVITY-SELECTOR` that takes the start times and the finish times of the activities, and and returns the maximal set of 
+We define a procedure, `RECURSIVE-ACTIVITY-SELECTOR` that takes the start times and the finish times of the activities, and and returns the maximal set of mutually compatible activities in $S_k$. 
+
+The procedure assumes that the input $n$ activities are all ordered by their finishing time $f_i$. If it is not, you will need to first sort it using merge sort, which will take $O(n \log n)$ time. 
+
+In order to start, we begin with the fictitious activity $a_0$ which ends at $f_0 = 0$, so the subproblem $S_0$ is the entire set of activities $S$ provided.
+
+The initial call, that will solve the entire problem is `RECURSIVE-ACTIVITY-SELECTOR(s,f,0,n)`.
+
+```pseudocode
+RECURSIVE-ACTIVITY-SELECTOR(s, f, k, n)
+m = k + 1
+while m <= n and s[m] <= f[k] 
+    m = m + 1 \\ with this we're finding the first activity that is finishing
+if m < n:
+    return {a_m} + RECURSIVE-ACTIVITY-SELECTOR(s, f,m,n)
+else
+    return {} 
+```
+
+Lines 1, 2, and 3 are looking for the first activity that is finishing in the set. This activity, $a_m$ is selected, and added to the list.
+This is added to the set of activities, and then the recursive algorithm is again called for the elements that will start after the selected $a_m$ ends.
 
 
 ## Time Complexity
+
+Assuming all the activities are sorted by finish times, the running time of the `RECURSIVE-ACTIVITY-SELECTOR` is $O(n)$, where $n$ is the number of activities. This is because, no while loop will go through the whole list, unless it terminates. And each while loop starts after the previous one ends.
 

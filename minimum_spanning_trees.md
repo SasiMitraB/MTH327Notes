@@ -197,7 +197,7 @@ Here's a brief explanation of the max-heapify algorithm:
    - Max-heapify continues recursively until the subtree rooted at the current node satisfies the max-heap property, or until it reaches leaf nodes (which trivially satisfy the max-heap property).
 
 4. **Time Complexity**:
-   - The time complexity of max-heapify is \( O(\log n) \), where \( n \) is the number of nodes in the subtree being heapified.
+   - The time complexity of max-heapify is $O(\log n)$, where $n$ is the number of nodes in the subtree being heapified.
 
 In summary, max-heapify is a recursive algorithm that adjusts the structure of a binary tree to ensure it adheres to the max-heap property, which is essential for efficient operations on heaps, such as extracting the maximum element or heapifying an entire array into a max-heap.
 
