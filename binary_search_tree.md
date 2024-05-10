@@ -18,7 +18,7 @@ The search tree data structure supports each of the following dynamic set operat
 
 Thus, a search tree can be used both as a dictionary and as a priority queue.
 
-Basic operations on a Binary Search Tree take time proportional to the height of the tree. For a complete binary tree with n nodes, the operations run in $\Theta (log n)$ time, but for a chain of n nodes, the operations run in $\Theta (n)$ time, which is the worst case scenario. The expectation value of the height of a binary tree is $\log n$ and is thus it is more efficient.
+Basic operations on a Binary Search Tree take time proportional to the height of the tree. For a complete binary tree with n nodes, the operations run in $\Theta (\log n)$ time, but for a chain of n nodes, the operations run in $\Theta (n)$ time, which is the worst case scenario. The expectation value of the height of a binary tree is $\log n$ and is thus it is more efficient.
 
 # What is a Binary Search Tree?
 
